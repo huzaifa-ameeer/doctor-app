@@ -38,7 +38,8 @@
         {
           "locationWhenInUsePermission": "Allow the app to use your location to show clinics near you."
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,

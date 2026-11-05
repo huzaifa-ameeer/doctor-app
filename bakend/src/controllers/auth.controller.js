@@ -57,9 +57,6 @@ async function register(req, res) {
       password: hashedPassword,
     });
 
-    const token = createToken(patient._id);
-    setTokenCookie(res, token);
-
     return res.status(201).json({ patient: publicPatient(patient) });
   } catch (error) {
     return res

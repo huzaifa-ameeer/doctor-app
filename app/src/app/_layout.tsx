@@ -7,6 +7,10 @@ import {
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import { AuthProvider } from "@/context/auth";
+import { ToastProvider } from "@/context/toast";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,9 +32,15 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="doctor/[id]" />
-    </Stack>
+    <SafeAreaProvider>
+      <AuthProvider>
+        <ToastProvider>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(tabs)" />
+            <Stack.Screen name="doctor/[id]" />
+          </Stack>
+        </ToastProvider>
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 }
